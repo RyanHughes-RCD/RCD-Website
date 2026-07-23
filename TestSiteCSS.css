@@ -52,29 +52,47 @@
             border-bottom: 2px solid rgba(0,0,0,0.08); /* subtle divider */
         }
         
-        .image-item {
-            text-align: center;
-            width: 240px;
-        }
-
-        .image-itemAnniv {
-            text-align: center;
-            width: 450px;
-        }
-
-        .gallery-item {
-            text-align: center;
-            width: 400px;
-        }    
-        
+        .image-item,
+        .image-itemAnniv,
+        .gallery-item,
         .gallery-itemLG {
             text-align: center;
-            width: 800px;
-        }   
+            flex: 1 1 240px; /* allow items to shrink/grow */
+            max-width: 100%;
+            box-sizing: border-box;
+            padding: 0.25rem;
+        }
+
+        /* larger gallery items can be slightly wider by default */
+        .gallery-itemLG {
+            flex: 2 1 480px;
+            max-width: 800px;
+        }
         
         .image-item p {
             margin-top: 0.5rem;
             font-weight: bold;
+        }
+
+        /* Make paragraph text scale on smaller screens for About page */
+        .text-content p,
+        .social-item p,
+        .text-content h2,
+        .social-item h3 {
+            font-size: clamp(1rem, 1.6vw, 1.25rem);
+            line-height: 1.5;
+        }
+
+        /* Ensure images inside gallery and about scale correctly */
+        .image-container img,
+        .image-item img,
+        .gallery-item img,
+        .image-itemAnniv img,
+        .gallery-itemLG img,
+        .shadow-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
         
         header {
@@ -88,17 +106,26 @@
             font: italic 900 clamp(2.8rem, 6vw, 4.5rem)/1 'Baletta', sans-serif;
             line-height: 1.05;
             white-space: nowrap;
+            text-align: center;
         }
 
         header h1 .title-break {
             display: inline-block;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 750px) {
+            header h1 {
+                white-space: normal;
+                text-align: center;
+                line-height: 1.5;
+            }
             header h1 .title-break {
                 display: block;
+                margin-top: 0.5rem;
             }
         }
+
+        /* header uses default cover behavior on narrow screens */
 
         nav {
             display: grid;
@@ -161,7 +188,7 @@
                 grid-template-columns: 1fr 1fr minmax(90px, 130px) 1fr 1fr;
                 padding: 0.6rem 0.75rem;
                 gap: 0.4rem;
-                min-height: 100px;
+                min-height: 88px;
             }
             nav a {
                 font-size: clamp(0.95rem, 1.4vw, 1.2rem);
@@ -177,6 +204,7 @@
                 grid-template-columns: 1fr 1fr minmax(70px, 100px) 1fr 1fr;
                 padding: 0.5rem 0.5rem;
                 gap: 0.3rem;
+                min-height: 76px;
             }
             nav a {
                 font-size: clamp(0.9rem, 2.2vw, 1.05rem);
