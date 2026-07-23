@@ -94,6 +94,25 @@
             height: auto;
             display: block;
         }
+
+        /* Keep SHOP page `.image-item` images fixed at their intended width (no scaling)
+           and ensure they are centered within their container */
+        .shop .image-item img {
+            width: 275px;
+            max-width: none;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Keep the About page anniversary image fixed (no scaling) */
+        .about .image-itemAnniv img {
+            width: 400px;
+            max-width: none;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
         
         header {
             background: url('./Images/HeaderV3.webp') no-repeat center center/cover;
